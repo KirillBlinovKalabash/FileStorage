@@ -7,15 +7,22 @@ import com.mongodb.client.gridfs.GridFSBucket;
 import com.mongodb.client.gridfs.GridFSBuckets;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
+
 
 @Configuration
 public class MongoConfig {
     private static final String DATABASE_NAME = "fileserver";
 
+    @Value("${spring.data.mongodb.uri}")
+    private String mongoUri;
+
     @Bean
     public MongoDatabase mongoDatabase() {
         // Get database reference
-        MongoClient client = MongoClients.create("mongodb://localhost:27017");
+
+
+        MongoClient client = MongoClients.create(mongoUri);
         return client.getDatabase(DATABASE_NAME);
     }
 
