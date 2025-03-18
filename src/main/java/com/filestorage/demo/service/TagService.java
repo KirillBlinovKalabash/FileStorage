@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Service
 public class TagService {
-    private final Set<String> allowedTags = Set.of("document", "image", "video", "backup");
+    private final Set<String> allowedTags = Set.of("document", "image", "video", "backup", "executable",  "audio");
 
     public boolean isValidTag(String tag) {
         return allowedTags.contains(tag.toLowerCase());
